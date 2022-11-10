@@ -10,7 +10,6 @@ Make your first commit by signing your name in the sign.txt file.
 yourname
 ```
 
-### 'npm install'
 
 ## Login Users
 You can use these dummy accounts to navigate the site.
