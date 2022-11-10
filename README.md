@@ -1,6 +1,9 @@
 # Alpha Project
 
-## Getting Started
+## Important !
+Make sure to use the 'dev' branch to test code before merging into master branch.
+
+### Getting Started
 Make your first commit by signing your name in the sign.txt file.
 
 ```js
