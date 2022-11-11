@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false)
         })
         return unsubscribe;
-    }, [setCurrentUser, allUsers])
+    }, [setCurrentUser])
 
     // Sign up function
     async function Signup(email, password, username) {
