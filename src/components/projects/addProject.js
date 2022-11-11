@@ -8,16 +8,19 @@ export default function AddProject(){
     const [ description, setDescription ] = useState('')
     const [ budget, setBudget ] = useState(0)
     const [ category, setCategory ] = useState('')
+    const [ type, setType ] = useState('')
     let { addProject } = useProject();
 
 
     const handleAddProject = ()=>{
+        console.log(type)
             addProject({
-                title: title,
-                github: github,
-                description: description,
-                budget: budget,
-                category: category
+                title,
+                github,
+                description,
+                budget,
+                category,
+                type
             })
     }
 
@@ -31,6 +34,7 @@ export default function AddProject(){
             <textarea value={description} onChange={(e)=> setDescription(e.target.value)} name="Text1" cols="40" rows="5"></textarea>
             <input value={github} placeholder='Github link https://projectlink.git' onChange={(e)=> setGithub(e.target.value)} />
             <input value={category} placeholder='Category' onChange={(e)=> setCategory(e.target.value)} />
+            <input value={type} placeholder='Type' onChange={(e)=> setType(e.target.value)} />
             <label htmlFor="projectBudget">Project Budget:</label>
             <input id="projectBudget" type="number" name="projectBudget" value={budget} onChange={(e)=> setBudget(e.target.value)} />   
             <button onClick={handleAddProject}>Add Project</button>

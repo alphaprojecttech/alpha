@@ -36,6 +36,7 @@ export const ProjectProvider = ({ children }) => {
         user: auth.currentUser.uid,
         pid: pid,
         category: config.category,
+        type: config.type,
         title: config.title,
         github: config.github,
         description: config.description,
