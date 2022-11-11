@@ -1,4 +1,4 @@
-import AllProjects from "../components/Projects/AllProjects";
+import AllProjects from '../components/projects/allProjects'
 
 
 export default function Home() {
