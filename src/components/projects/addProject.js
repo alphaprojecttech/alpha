@@ -11,7 +11,7 @@ export default function AddProject(){
     const [ type, setType ] = useState('')
     let { addProject } = useProject();
 
-
+    //Add project to database
     const handleAddProject = ()=>{
         console.log(type)
             addProject({

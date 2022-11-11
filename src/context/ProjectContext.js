@@ -24,7 +24,7 @@ export const ProjectProvider = ({ children }) => {
         });
       }, [onValue])
 
-
+      //Add project 
   function addProject(config){
     let pid = v4()
     let date = new Date().getTime()
