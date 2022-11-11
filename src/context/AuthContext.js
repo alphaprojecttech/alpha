@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { ref as sRef, uploadBytes, getDownloadURL } from 'firebase/storage'
 import React, { useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase';
+import { auth, storage } from '../firebase';
 
 const AuthContext = React.createContext()
 
@@ -64,11 +65,20 @@ export const AuthProvider = ({ children }) => {
     }
 
     //Edit profile image
-    function editPhotoURL(image){
-        updateProfile(auth.currentUser, {
-            photoURL: image
-        })
-    }
+    async function editPhotoURL(fileTarget){
+        const imageRef = sRef(storage, 'profileImages/' + auth.currentUser.uid);
+        await uploadBytes(imageRef, fileTarget)
+              .then(()=>{
+                    getDownloadURL(imageRef)
+                        .then((url)=>{
+                            updateProfile(auth.currentUser, {
+                                photoURL: url
+                            })
+                        })
+                  })  
+    } 
+
+  
 
     const value = {
         currentUser,

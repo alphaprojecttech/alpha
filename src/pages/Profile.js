@@ -4,15 +4,22 @@ import { auth } from '../firebase';
 
 export default function Profile(){
     const [ displayName, setDisplayName ] = useState('')
-    const [ previewImage, setPreviewImage ] = useState('')
+    const [ previewImage, setPreviewImage ] = useState('');
+    const [ fileTarget, setFileTarget ] = useState('')
     const { editDisplayName, editPhotoURL } = useAuth()
 
     const handleEditProfile = (e)=>{
         editDisplayName(displayName)
     }
 
-    const handleEditPhotoURL = (e)=> {
-        editPhotoURL(previewImage)
+    const fileInput = (e) => {
+        setFileTarget(e.target.files[0]);
+        setPreviewImage(URL.createObjectURL(e.target.files[0]));
+
+    };
+
+    const handleEditPhotoURL = ()=> {
+        editPhotoURL(fileTarget)
     }
 
     return(
@@ -28,10 +35,11 @@ export default function Profile(){
             </div>
             <div style={{padding: 10}}>
                 <p>Edit Profile Image</p>
-                <input type="file" onChange={(e)=> setPreviewImage(URL.createObjectURL(e.target.files[0]))} />
+                <input type="file" onChange={fileInput} />
                 <button onClick={handleEditPhotoURL}>Save</button>
-                {/* <button onClick={()=> setPreviewImage('')}>Clear</button> */}
-                <img style={{width: 50, height: 50}} src={previewImage} />
+                {!previewImage? null :
+                    <img style={{width: 50, height: 50}} src={previewImage} />
+                }
             </div>
         </div>
     )
