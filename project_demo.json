@@ -1,8 +1,17 @@
 {
-  "title": "title",
-  "description": "description",
-  "git_link": "link",
-  "project_type": "type",
-  "budget": "2342",
-  "department": "marketing"
+  "budget": "1200",
+  "category": "ecommerce",
+  "complete": false,
+  "ongoing": false,
+  "ontesting": false,
+  "created": 1668156809297,
+  "deadline": 1668157809297,
+  "description": "Demo Description",
+  "github": "https://github.com/hr-sobuj/",
+  "participants": [{ "pid": "user_id" }],
+  "startdate": 1668156809297,
+  "title": "Demo",
+  "type": "api",
+  "user": "B6kI46Ho0MYqV9MX0qXfx0VIMMc2",
+  "department": "Marketing"
 }
