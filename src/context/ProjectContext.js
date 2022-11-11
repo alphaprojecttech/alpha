@@ -28,7 +28,6 @@ export const ProjectProvider = ({ children }) => {
   function addProject(config){
     let pid = v4()
     let date = new Date().getTime()
-    const db = getDatabase();
       set(ref(rtDb, 'projects/' + pid), {
         created: date,
         deadline: date + 1000000,
@@ -41,7 +40,7 @@ export const ProjectProvider = ({ children }) => {
         github: config.github,
         description: config.description,
         complete: false,
-        participants: [auth.currentUser.uid],
+        participants: [ auth.currentUser.uid ],
         budget: config.budget,
       });
   }

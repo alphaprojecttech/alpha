@@ -13,8 +13,6 @@ export default function AddProject(){
 
     //Add project to database
     const handleAddProject = ()=>{
-        console.log(category)
-        console.log(type)
             addProject({
                 title,
                 github,
