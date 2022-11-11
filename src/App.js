@@ -1,7 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import EditProject from "./components/projects/editProject";
 import { useAuth } from "./context/AuthContext";
-import Chat from "./pages/Chat";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";

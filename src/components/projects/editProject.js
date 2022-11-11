@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useProject } from '../../context/ProjectContext'
+import { useProject } from '../../context/ProjectContext';
 
 
 export default function EditProject({project, setShowEdit}){

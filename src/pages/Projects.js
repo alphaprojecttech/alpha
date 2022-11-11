@@ -1,7 +1,7 @@
-import AddProject from "../components/projects/addProject";
-import EditProject from "../components/projects/editProject";
-import { useProject } from '../context/ProjectContext'
-import { useState } from 'react'
+import { useState } from 'react';
+import AddProject from "../components/Projects/AddProject";
+import EditProject from "../components/Projects/EditProject";
+import { useProject } from '../context/ProjectContext';
 
 export default function Projects(){
     const { allProjects, deleteProject } = useProject()

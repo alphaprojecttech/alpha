@@ -4,10 +4,10 @@ import {
   BrowserRouter
 } from "react-router-dom";
 import App from './App';
+import NavBar from './components/NavBar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 import { ProjectProvider } from './context/ProjectContext';
 import './index.css';
-import NavBar from './components/nav/navBar'
 
 
 
@@ -16,7 +16,7 @@ root.render(
   <BrowserRouter>
     <ProjectProvider>
       <AuthProvider>
-        <NavBar />
+        <NavBar/>
         <App />
       </AuthProvider>
     </ProjectProvider>
