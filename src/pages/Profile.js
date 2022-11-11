@@ -7,17 +7,17 @@ export default function Profile(){
     const [ previewImage, setPreviewImage ] = useState('');
     const [ fileTarget, setFileTarget ] = useState('')
     const { editDisplayName, editPhotoURL } = useAuth()
-
+    //Edit username
     const handleEditProfile = (e)=>{
         editDisplayName(displayName)
     }
-
+    //Get image file
     const fileInput = (e) => {
         setFileTarget(e.target.files[0]);
         setPreviewImage(URL.createObjectURL(e.target.files[0]));
 
     };
-
+    //Upload profile image
     const handleEditPhotoURL = ()=> {
         editPhotoURL(fileTarget)
     }

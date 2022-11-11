@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import EditProject from "./components/projects/editProject";
 import { useAuth } from "./context/AuthContext";
 import Chat from "./pages/Chat";
 
@@ -21,7 +22,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/" element={<Home />} />
               {/* <Route path="/chat" element={<Chat />} /> */}
-              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects" element={<Projects />}/>
               <Route path="/profile" element={<Profile />} />
             </>
           ) :

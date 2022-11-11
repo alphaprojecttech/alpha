@@ -1,4 +1,4 @@
-import { child, get, getDatabase, onValue, push, ref, set, update } from "firebase/database";
+import { child, get, getDatabase, onValue, push, ref, remove, set, update } from "firebase/database";
 import React, { useContext, useEffect, useState } from 'react';
 import {auth, rtDb} from '../firebase';
 import { v4 } from 'uuid'
@@ -11,7 +11,7 @@ export const useProject = () => {
 
 export const ProjectProvider = ({ children }) => {
 
-    let [ allprojects, setAllprojects ] = useState([])
+    let [ allProjects, setAllProjects ] = useState([])
 
       useEffect(()=>{
         const projectsRef = ref(rtDb, 'projects/');
@@ -20,7 +20,7 @@ export const ProjectProvider = ({ children }) => {
           snapshot.forEach(project => {
             array.push(project.val())
           })
-          setAllprojects(array)
+          setAllProjects(array)
         });
       }, [onValue])
 
@@ -36,7 +36,7 @@ export const ProjectProvider = ({ children }) => {
         user: auth.currentUser.uid,
         pid: pid,
         category: config.category,
-        title: config.name,
+        title: config.title,
         github: config.github,
         description: config.description,
         complete: false,
@@ -49,10 +49,15 @@ export const ProjectProvider = ({ children }) => {
     update(ref(rtDb, 'projects/' + pid), updates)
   }
 
+  function deleteProject(pid){
+    remove(ref(rtDb, 'projects/' + pid))
+  }
+
     const value = {
         addProject,
         editProject,
-        allprojects
+        deleteProject,
+        allProjects
     }
 
     return (

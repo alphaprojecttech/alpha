@@ -7,7 +7,7 @@ import { useProject } from '../../context/ProjectContext'
 export default function AllProjects() {
     const [ showTasks, setShowTasks ] = useState(false)
 
-    let { allprojects } = useProject();
+    let { allProjects } = useProject();
 
     const handleSelectProject = (pid)=> {
         console.log(pid)
@@ -16,7 +16,7 @@ export default function AllProjects() {
 
     return (
         <div>
-            {allprojects.map(project => {
+            {allProjects.map(project => {
                 return(
                     <div key={project.pid} style={{border: '1px solid black', padding: 5, margin: 10}}>
                         <h3>Title: {project.title}</h3>
