@@ -4,12 +4,13 @@ import Chat from "./pages/Chat";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Projects from "./pages/Projects";
 
 
 function App() {
 
   const { currentUser } = useAuth();
-
 
   return (
     <>
@@ -19,7 +20,9 @@ function App() {
             <>
               <Route path="/home" element={<Home />} />
               <Route path="/" element={<Home />} />
-              <Route path="/chat" element={<Chat />} />
+              {/* <Route path="/chat" element={<Chat />} /> */}
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/profile" element={<Profile />} />
             </>
           ) :
           (

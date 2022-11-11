@@ -2,22 +2,25 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getDatabase } from "firebase/database";
+
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-gqa3l0I_nHHICPivakJ5K0UXgLOp518",
-  authDomain: "alphaproject-120e3.firebaseapp.com",
-  databaseURL: "https://alphaproject-120e3-default-rtdb.firebaseio.com",
-  projectId: "alphaproject-120e3",
-  storageBucket: "alphaproject-120e3.appspot.com",
-  messagingSenderId: "1093550450299",
-  appId: "1:1093550450299:web:af4fb894d371d14c7824de",
-  measurementId: "G-4VWGE87VDQ"
+  apiKey: "AIzaSyAGKQZh2a1B8OiCZbf2T9UmOEaOJHVwZT4",
+  authDomain: "alpha-project-405b5.firebaseapp.com",
+  databaseURL: "https://alpha-project-405b5-default-rtdb.firebaseio.com",
+  projectId: "alpha-project-405b5",
+  storageBucket: "alpha-project-405b5.appspot.com",
+  messagingSenderId: "10242689522",
+  appId: "1:10242689522:web:2b3d16fd2e7186de6a436b",
+  measurementId: "G-D9JN87C1XB"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+const fsDb = getFirestore(app);
 const storage = getStorage(app);
+const rtDb = getDatabase(app)
 
-export { auth, db, storage };
+export { auth, fsDb, rtDb, storage };

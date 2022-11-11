@@ -1,6 +1,7 @@
-import { child, get, getDatabase, push, ref, set } from "firebase/database";
-import React, { useContext, useState } from 'react';
-import '../firebase';
+import { child, get, getDatabase, onValue, push, ref, set, update } from "firebase/database";
+import React, { useContext, useEffect, useState } from 'react';
+import {auth, rtDb} from '../firebase';
+import { v4 } from 'uuid'
 
 const ProjectContext = React.createContext()
 
@@ -10,34 +11,47 @@ export const useProject = () => {
 
 export const ProjectProvider = ({ children }) => {
 
-    let [allprojects,setAllprojects]=useState()
+    let [ allprojects, setAllprojects ] = useState([])
 
-    // Logout function 
-    function addProjects(userId,todo) {
-        const db = getDatabase();
-        const key = push(child(ref(db), 'projects')).key;
-        if(userId){
-            set(ref(db, 'projects/'+userId+"/"+key), todo);
-        }
-    }
-
-    function fetchProjects(userId){
-        const dbRef = ref(getDatabase());
-        get(child(dbRef, `projects/${userId}`)).then((snapshot) => {
-          if (snapshot.exists()) {
-            // console.log(snapshot.val());
-            setAllprojects(snapshot.val());
-          } else {
-            console.log("No data available");
-          }
-        }).catch((error) => {
-          console.error(error);
+      useEffect(()=>{
+        const projectsRef = ref(rtDb, 'projects/');
+        onValue(projectsRef, (snapshot) => {
+          let array = []
+          snapshot.forEach(project => {
+            array.push(project.val())
+          })
+          setAllprojects(array)
         });
-    }
-    
+      }, [onValue])
+
+
+  function addProject(config){
+    let pid = v4()
+    let date = new Date().getTime()
+    const db = getDatabase();
+      set(ref(rtDb, 'projects/' + pid), {
+        created: date,
+        deadline: date + 1000000,
+        startdate: date,
+        user: auth.currentUser.uid,
+        pid: pid,
+        category: config.category,
+        title: config.name,
+        github: config.github,
+        description: config.description,
+        complete: false,
+        participants: [auth.currentUser.uid],
+        budget: config.budget,
+      });
+  }
+
+  function editProject(pid, updates){
+    update(ref(rtDb, 'projects/' + pid), updates)
+  }
+
     const value = {
-        addProjects,
-        fetchProjects,
+        addProject,
+        editProject,
         allprojects
     }
 
