@@ -5,7 +5,7 @@ import { MdWorkOutline } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function NavBar(){
+export default function NavBar(props){
     
     return(
       <>
