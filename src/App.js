@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import AllTask from "./components/Task/AllTask";
 import { useAuth } from "./context/AuthContext";
 
 import Home from "./pages/Home";
@@ -24,6 +25,7 @@ function App() {
               <Route path="/projects" element={<Projects />}/>
               <Route path="/profile" element={<Profile />} />
               <Route path="/task" element={<Task />} />
+              <Route path="/view_task" element={<AllTask />} />
             </>
           ) :
           (
