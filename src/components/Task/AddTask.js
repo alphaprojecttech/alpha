@@ -1,4 +1,20 @@
+import { useState } from "react"
+import { useTask } from "../../context/TaskContext"
+
+
 export default function AddTask() {
+    
+    const [name, setTitle] = useState('')
+    const [text, setGithub] = useState('')
+    const [type, setType] = useState('')
+    const [deadline, setBudget] = useState()
+    const [amount, setAmount] = useState('')
+    const [image, setImage] = useState('')
+    const [active, setActive] = useState(false)
+    const [complete, setComplete] = useState(false)
+
+    let { addProject } = useTask();
+    
     return (
         <>
             <form className="w-1/2 border flex flex-col space-y-3">
