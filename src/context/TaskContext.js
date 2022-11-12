@@ -14,44 +14,46 @@ export const TaskProvider = ({ children }) => {
     let [ allTasks, setAllTasks ] = useState([])
 
   useEffect(() => {
-    const projectsRef = ref(rtDb, 'projects/');
-    onValue(projectsRef, (snapshot) => {
+    const taskRef = ref(rtDb, 'projects/');
+    onValue(taskRef, (snapshot) => {
       let array = []
-      snapshot.forEach(project => {
-        array.push(project.val())
+      snapshot.forEach(task => {
+        array.push(task.val())
       })
       setAllTasks(array)
     });
   }, []);
 
       //Add project 
-  function addTask(config){
+  function addTask(config) {
+    console.log(config);
     let pid = v4();
       set(ref(rtDb, 'tasks/' + pid), {
         name: config.name,
         text: config.text,
         type: config.type,
-        deadline: config.date,
+        deadline: config.deadline,
         amount: config.amount,
         image: config.image,
         active: config.active,
         complete: config.complete,
+        project: config.project,
         participants: [ auth.currentUser.uid ],
       });
   }
 
-  function editProject(pid, updates){
-    update(ref(rtDb, 'projects/' + pid), updates)
+  function editTask(pid, updates){
+    update(ref(rtDb, 'task/' + pid), updates)
   }
 
-  function deleteProject(pid){
-    remove(ref(rtDb, 'projects/' + pid))
+  function deleteTask(pid){
+    remove(ref(rtDb, 'task/' + pid))
   }
 
     const value = {
         addTask,
-        editProject,
-        deleteProject,
+        editTask,
+        deleteTask,
       allTasks
     }
 
