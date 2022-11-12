@@ -7,6 +7,7 @@ import App from './App';
 import NavBar from './components/NavBar/NavBar';
 import { AuthProvider } from './context/AuthContext';
 import { ProjectProvider } from './context/ProjectContext';
+import { TaskProvider } from './context/TaskContext';
 import './index.css';
 
 
@@ -14,11 +15,13 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
+    <TaskProvider>
     <ProjectProvider>
       <AuthProvider>
         {/* <NavBar/> */}
         <App />
       </AuthProvider>
-    </ProjectProvider>
+      </ProjectProvider>
+    </TaskProvider>
   </BrowserRouter>
 );

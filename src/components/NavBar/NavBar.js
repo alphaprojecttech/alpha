@@ -5,9 +5,10 @@ import { MdWorkOutline } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function NavBar(props) {
-  return (
-    <>
+export default function NavBar(){
+    
+    return(
+      <>
       <aside
         className={
           props.navbar
@@ -73,9 +74,33 @@ export default function NavBar(props) {
                 <p className="font-medium capitalize">Profile</p>
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                exact
+                activeClassName="active"
+                className="flex items-center gap-4 px-8 py-3 text-white capitalize w-full border-r-2 border-transparent"
+                to="/task"
+              >
+                <FaRegUserCircle size={22} className="fill-white" />
+                <p className="font-medium capitalize">Task</p>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                exact
+                activeClassName="active"
+                className="flex items-center gap-4 px-8 py-3 text-white capitalize w-full border-r-2 border-transparent"
+                to="/view_task"
+              >
+                <FaRegUserCircle size={22} className="fill-white" />
+                <p className="font-medium capitalize">View task</p>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </aside>
     </>
-  );
+    )
 }

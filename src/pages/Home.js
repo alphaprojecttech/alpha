@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import NavBar from "../components/NavBar/NavBar";
 import AllProjects from "../components/projects/allProjects";
 
+
 export default function Home() {
 
   const [navbar, setNavbar] = useState(false)
