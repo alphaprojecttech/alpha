@@ -16,7 +16,7 @@ root.render(
   <BrowserRouter>
     <ProjectProvider>
       <AuthProvider>
-        <NavBar/>
+        {/* <NavBar/> */}
         <App />
       </AuthProvider>
     </ProjectProvider>
