@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Projects from "./pages/Projects";
+import Task from "./pages/Task";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
               {/* <Route path="/chat" element={<Chat />} /> */}
               <Route path="/projects" element={<Projects />}/>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/task" element={<Task />} />
             </>
           ) :
           (
