@@ -26,7 +26,7 @@ export default function Task() {
                         <button onClick={handleShowEdit}>Edit</button>
                         <button onClick={() => deleteTask(task.pid)}>Delete</button>
                         {!showEdit ? null :
-                            <EditTask project={task} setShowEdit={setShowEdit} />
+                            <EditTask task={task} setShowEdit={setShowEdit} />
                         }
                     </div>
                 )

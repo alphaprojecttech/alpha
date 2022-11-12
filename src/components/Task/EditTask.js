@@ -1,24 +1,27 @@
 import { useState } from 'react';
-import { useProject } from '../../context/ProjectContext';
+import { useTask } from '../../context/TaskContext';
 
 
-export default function EditTask({project, setShowEdit}){
-    const [ title, setTitle ] = useState(project.title)
-    const [github, setGithub ] = useState(project.github)
-    const [ description, setDescription ] = useState(project.description)
-    const [ budget, setBudget ] = useState(project.budget)
-    const [ category, setCategory ] = useState(project.category)
+export default function EditTask({task, setShowEdit}){
+    const [name, setName] = useState(task.name)
+    const [text, setText] = useState(task.text)
+    const [type, setType] = useState(task.type)
+    const [project, setProject] = useState(task.project)
+    const [deadline, setDeadline] = useState(task.deadline)
+    const [amount, setAmount] = useState(task.amount)
+    const [image, setImage] = useState(task.image)
+    const [active, setActive] = useState(task.active)
+    const [complete, setComplete] = useState(task.complete)
 
-    let { editProject } = useProject();
+    let { editTask } = useTask();
 
 
     const handleEditProject = ()=>{
-        editProject(project.pid, {
-            title: title,
-            github: github,
-            description: description,
-            budget: budget,
-            category: category
+        editTask(task.pid, {
+            name: name,
+            text: text,
+            deadline: deadline,
+            amount: amount,
         })
         setShowEdit(false)
     }
@@ -28,13 +31,12 @@ export default function EditTask({project, setShowEdit}){
 
     return(
         <div style={{display: 'flex', flexDirection: 'column', width: 400, margin: 10, padding: 5, border: '2px solid green'}}>
-            <h3>Edit Project</h3>
-            <input value={title} placeholder='Name' onChange={(e)=> setTitle(e.target.value)} />
-            <input value={description} placeholder='Description' onChange={(e)=> setDescription(e.target.value)} />
-            <input value={github} placeholder='Github link' onChange={(e)=> setGithub(e.target.value)} />
-            <input value={category} placeholder='Category' onChange={(e)=> setCategory(e.target.value)} />
-            <label htmlFor="projectBudget">Project Budget:</label>
-            <input id="projectBudget" type="number" name="projectBudget" value={budget} onChange={(e)=> setBudget(e.target.value)} />   
+            <h3>Edit Task</h3>
+            <input value={name} placeholder='Task Name' onChange={(e)=> setName(e.target.value)} />
+            <input value={text} placeholder='Task Description' onChange={(e)=> setText(e.target.value)} />
+            <input value={amount} placeholder='Amount' type='number' onChange={(e)=> setAmount(e.target.value)} />
+            <input value={deadline} placeholder='Deadline' type='date' onChange={(e)=> setDeadline(e.target.value)} />
+         
             <button onClick={handleEditProject}>Save Changes</button>
         </div>
     )
