@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useProject } from "../../context/ProjectContext"
 import { useTask } from "../../context/TaskContext"
 
@@ -54,11 +54,11 @@ export default function AddTask() {
                     <h1>Project</h1>
                     <select name="" id="" className="border" onChange={(e) => setProject(e.target.value)}>
                         <option value="">Choose One</option>
-                        {allProjects?.map((projectItem) => {
+                        {allProjects?.map((projectItem, idx) => {
                             return (
-                                <>
+                                <React.Fragment key={idx}>
                                     <option value={projectItem.pid}>{projectItem.title }</option>
-                                </>
+                                </React.Fragment>
                             )
                         })}
                     </select>
