@@ -13,7 +13,6 @@ export default function AllProjects() {
         console.log(pid)
     }
 
-
     return (
         <div>
             {allProjects.map(project => {
@@ -33,7 +32,6 @@ export default function AllProjects() {
                     </div>
                 )
             })}
-    
         </div>
     )
 }

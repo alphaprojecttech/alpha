@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AllTask from "./components/Task/AllTask";
 import { useAuth } from "./context/AuthContext";
-
+import Chat from "./pages/Chat";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -24,6 +24,7 @@ function App() {
               {/* <Route path="/chat" element={<Chat />} /> */}
               <Route path="/projects" element={<Projects />}/>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/chat" element={<Chat />} />
               <Route path="/task" element={<Task />} />
               <Route path="/view_task" element={<AllTask />} />
             </>

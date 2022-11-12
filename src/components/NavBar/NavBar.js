@@ -17,6 +17,7 @@ export default function NavBar(){
                 <Link style={{padding: 10}} to="/profile">Profile</Link>
                 <Link style={{padding: 10}} to="/task">Task</Link>
                 <Link style={{padding: 10}} to="/view_task">View Task</Link>
+                <Link style={{padding: 10}} to="/chat">Chat</Link>
                 <button onClick={Logout}>Logout</button>
             </div>
         </nav>
