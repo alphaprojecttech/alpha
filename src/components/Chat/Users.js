@@ -10,9 +10,9 @@ export default function Users(){
                     <div>
                         <img src={user.photoURL || blank} style={{borderRadius: 100, width: 50, height: 50}} />
                     </div>
-                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <h3 style={{color: 'white'}}>{user.displayName || user.uid.slice(0, 10)}</h3>
-                        <h4 style={{color: 'white'}}>{user.displayName || user.uid.slice(0, 10)}</h4>
+                    <div style={{display: 'flex', flexDirection: 'column', marginLeft: 5}}>
+                        <h3 style={{color: 'white', fontWeight: 'bold'}}>{user.displayName || user.uid.slice(0, 10)}</h3>
+                        <p style={{color: 'white', fontSize: 14}}>{user.displayName || user.uid.slice(0, 10)}</p>
                     </div>
                 </div>
     })
