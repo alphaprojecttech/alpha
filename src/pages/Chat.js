@@ -1,9 +1,6 @@
 import ChatBox from "../components/Chat/ChatBox";
 import Users from "../components/Chat/Users";
 
-import { useChat } from "../context/ChatContext";
-
-
 export default function Chat(){
 
   
@@ -13,7 +10,7 @@ export default function Chat(){
             <div style={{display: 'flex', flex: 1, flexDirection: 'column', backgroundColor: 'grey'}}>
                 <Users />
             </div>
-            <div style={{position: 'relative', display: 'flex', flex: 3, flexDirection: 'column', backgroundColor: 'green'}}>
+            <div style={{position: 'relative', display: 'flex', flex: 3, flexDirection: 'column'}}>
                 <ChatBox />
             </div>
             <div style={{display: 'flex', flex: 1, backgroundColor: 'purple'}}>

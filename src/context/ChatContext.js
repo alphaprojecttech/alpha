@@ -1,4 +1,4 @@
-import { onValue, ref, remove, set, update } from "firebase/database";
+import { onValue, push, ref, remove, set, update } from "firebase/database";
 import React, { useContext, useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { auth, rtDb } from '../firebase';
@@ -36,9 +36,16 @@ export const ChatProvider = ({ children }) => {
     });
   }
 
-  // function editTask(pid, updates) {
-  //   update(ref(rtDb, 'tasks/' + pid), updates)
-  // }
+  function sendMessage(config) {
+    push(ref(rtDb, 'conversations/' + config.cid + '/messages'), {
+      timestamp: new Date().getTime(),
+      message: config.message,
+      cid: config.cid,
+      pid: config.pid,
+      sender: auth.currentUser.uid,
+      media: config.media
+    })
+  }
 
   // function deleteTask(pid) {
   //   remove(ref(rtDb, 'tasks/' + pid))
@@ -46,7 +53,8 @@ export const ChatProvider = ({ children }) => {
 
   const value = {
       startConversation,
-      allConversations
+      allConversations,
+      sendMessage
   }
 
   return (
