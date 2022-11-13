@@ -40,6 +40,10 @@ export default function Profile() {
           <input type="text" readOnly={true} value={auth.currentUser?.uid} />
         </div>
         <div style={{ padding: 10 }}>
+          <p>Email</p>
+          <input type="text" readOnly={true} value={auth.currentUser?.email} />
+        </div>
+        <div style={{ padding: 10 }}>
           <p>Edit Display Name</p>
           <input
             type="text"

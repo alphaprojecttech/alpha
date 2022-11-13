@@ -5,7 +5,7 @@ export default function Users(){
 
     let { allUsers } = useAuth()
 
-    console.log(allUsers)
+
 
     return !allUsers? 'Loading..' : allUsers.users.map((user)=>{
         return <div key={user.uid} style={{display: 'flex', flexDirection: 'row', backgroundColor: '#222222', marginTop: 5, marginBottom: 5, padding: 10}}>

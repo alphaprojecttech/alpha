@@ -6,6 +6,7 @@ import {
 import App from './App';
 import NavBar from './components/NavBar/NavBar';
 import { AuthProvider } from './context/AuthContext';
+import { ChatProvider } from './context/ChatContext';
 import { ProjectProvider } from './context/ProjectContext';
 import { TaskProvider } from './context/TaskContext';
 import './index.css';
@@ -16,12 +17,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <TaskProvider>
-    <ProjectProvider>
+      <ChatProvider>
+      <ProjectProvider>
       <AuthProvider>
-        {/* <NavBar/> */}
         <App />
       </AuthProvider>
       </ProjectProvider>
+      </ChatProvider>
     </TaskProvider>
   </BrowserRouter>
 );

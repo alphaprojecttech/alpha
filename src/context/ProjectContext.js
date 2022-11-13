@@ -2,6 +2,7 @@ import { child, get, getDatabase, onValue, push, ref, remove, set, update } from
 import React, { useContext, useEffect, useState } from 'react';
 import {auth, rtDb} from '../firebase';
 import { v4 } from 'uuid'
+import { useChat } from "./ChatContext";
 
 const ProjectContext = React.createContext()
 
@@ -12,6 +13,8 @@ export const useProject = () => {
 export const ProjectProvider = ({ children }) => {
 
     let [ allProjects, setAllProjects ] = useState([])
+    const { startConversation } = useChat()
+
 
       useEffect(()=>{
         const projectsRef = ref(rtDb, 'projects/');
@@ -28,7 +31,7 @@ export const ProjectProvider = ({ children }) => {
   function addProject(config){
     let pid = v4()
     let date = new Date().getTime()
-      set(ref(rtDb, 'projects/' + pid), {
+    let projectDetails = {
         created: date,
         deadline: date + 1000000,
         startdate: date,
@@ -42,7 +45,11 @@ export const ProjectProvider = ({ children }) => {
         complete: false,
         participants: [ auth.currentUser.uid ],
         budget: config.budget,
-      });
+      }
+      set(ref(rtDb, 'projects/' + pid), projectDetails);
+      startConversation({
+        pid: projectDetails.pid
+      })
   }
 
   function editProject(pid, updates){

@@ -14,53 +14,44 @@ export const ChatProvider = ({ children }) => {
   let [allConversations, setAllConversations] = useState([])
 
   useEffect(() => {
-    const messagesRef = ref(rtDb, 'messages/');
-    onValue(taskRef, (snapshot) => {
+    const conversationsRef = ref(rtDb, 'conversations/');
+    onValue(conversationsRef, (snapshot) => {
       let array = []
-      snapshot.forEach(task => {
-        array.push(task.val())
+      snapshot.forEach(conversation => {
+        array.push(conversation.val())
       })
-      setAllTasks(array)
+      setAllConversations(array)
     });
   }, [onValue]);
 
   //Add project 
-  function addTask(config) {
-    console.log(config);
-    let pid = v4();
-    set(ref(rtDb, 'tasks/' + pid), {
-      pid: pid,
-      name: config.name,
-      text: config.text,
-      type: config.type,
-      deadline: config.deadline,
-      amount: config.amount,
-      image: config.image,
-      active: config.active,
-      complete: config.complete,
-      project: config.project,
-      participants: [auth.currentUser.uid],
+  function startConversation(config) {
+    let cid = v4();
+    set(ref(rtDb, 'conversations/' + cid), {
+      cid: cid,
+      pid: config.pid,
+      timestamp: new Date().getTime(),
+      creator: auth.currentUser.uid,
+      participants: [auth.currentUser.uid]
     });
   }
 
-  function editTask(pid, updates) {
-    update(ref(rtDb, 'tasks/' + pid), updates)
-  }
+  // function editTask(pid, updates) {
+  //   update(ref(rtDb, 'tasks/' + pid), updates)
+  // }
 
-  function deleteTask(pid) {
-    remove(ref(rtDb, 'tasks/' + pid))
-  }
+  // function deleteTask(pid) {
+  //   remove(ref(rtDb, 'tasks/' + pid))
+  // }
 
   const value = {
-    addTask,
-    editTask,
-    deleteTask,
-    allTasks
+      startConversation,
+      allConversations
   }
 
   return (
-    <TaskContext.Provider value={value}>
+    <ChatContext.Provider value={value}>
       {children}
-    </TaskContext.Provider>
+    </ChatContext.Provider>
   )
 }
