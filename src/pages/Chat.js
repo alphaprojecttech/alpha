@@ -4,11 +4,11 @@ import Users from "../components/Chat/Users";
 
 export default function Chat(){
     return(
-        <div style={{display: 'flex', flex: 1, flexDirection: 'row', height: '100vh'}}>
+        <div style={{position: 'absolute', display: 'flex', flexDirection: 'row', height: '100vh', width: '100vw'}}>
             <div style={{display: 'flex', flex: 1, flexDirection: 'column', backgroundColor: 'grey'}}>
                 <Users />
             </div>
-            <div style={{display: 'flex', flex: 3, backgroundColor: 'green'}}>
+            <div style={{position: 'relative', display: 'flex', flex: 3, flexDirection: 'column', backgroundColor: 'green'}}>
                 <ChatBox />
             </div>
             <div style={{display: 'flex', flex: 1, backgroundColor: 'purple'}}>
