@@ -8,6 +8,8 @@ export default function AllTask() {
 
     let { allTasks } = useTask();
 
+    console.log(typeof(allTasks));
+
 
     const handleSelectTask = (pid) => {
         console.log(pid)
@@ -17,21 +19,23 @@ export default function AllTask() {
 
     return (
         <div>
-            {allTasks?.map(task => {
+            <h1 className='text-white'>hi</h1>
+            {/* {allTasks?.map((task) => {
+                console.log(task);
                 return (
                     <div key={task.pid} style={{ border: '1px solid black', padding: 5, margin: 10 }}>
-                        <h3>Name: {task.name}</h3>
-                        <h4>Pid: {task.pid}</h4>
-                        <p>Text: {task.text}</p>
-                        <p>Type: {task.type}</p>
-                        <p>Amount: {task.amount}</p>
-                        <p>Image: ${task.image}</p>
-                        <p>Active: {task.active}</p>
-                        <p>Complete: {task.complete}</p>
-                        <p>Project: {task.project}</p>
+                        <h3>Name: {task?.name}</h3>
+                        <h4>Pid: {task?.pid}</h4>
+                        <p>Text: {task?.text}</p>
+                        <p>Type: {task?.type}</p>
+                        <p>Amount: {task?.amount}</p>
+                        <p>Image: ${task?.image}</p>
+                        <p>Active: {task?.active}</p>
+                        <p>Complete: {task?.complete}</p>
+                        <p>Project: {task?.project}</p>
                     </div>
                 )
-            })}
+            })} */}
 
         </div>
     )

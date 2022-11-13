@@ -1,7 +1,7 @@
-import { child, get, getDatabase, onValue, push, ref, remove, set, update } from "firebase/database";
+import { onValue, ref, remove, set, update } from "firebase/database";
 import React, { useContext, useEffect, useState } from 'react';
-import {auth, rtDb} from '../firebase';
-import { v4 } from 'uuid'
+import { v4 } from 'uuid';
+import { auth, rtDb } from '../firebase';
 import { useChat } from "./ChatContext";
 
 const ProjectContext = React.createContext()

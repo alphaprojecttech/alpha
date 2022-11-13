@@ -12,6 +12,7 @@ export const useTask = () => {
 export const TaskProvider = ({ children }) => {
 
   let [allTasks, setAllTasks] = useState([])
+  let [taskId, setTaskId] = useState([])
 
   useEffect(() => {
     const taskRef = ref(rtDb, 'tasks/');
@@ -22,14 +23,16 @@ export const TaskProvider = ({ children }) => {
       })
       setAllTasks(array)
     });
+
+    
   }, [onValue]);
 
   //Add project 
   function addTask(config) {
     console.log(config);
-    let pid = v4();
-    set(ref(rtDb, 'tasks/' + pid), {
-      pid: pid,
+    let tid = v4();
+    set(ref(rtDb, 'tasks/' + tid), {
+      tid: tid,
       name: config.name,
       text: config.text,
       type: config.type,
@@ -43,18 +46,36 @@ export const TaskProvider = ({ children }) => {
     });
   }
 
-  function editTask(pid, updates) {
-    update(ref(rtDb, 'tasks/' + pid), updates)
+  function editTask(tid, updates) {
+    update(ref(rtDb, 'tasks/' + tid), updates)
   }
 
-  function deleteTask(pid) {
-    remove(ref(rtDb, 'tasks/' + pid))
+  function deleteTask(tid) {
+    remove(ref(rtDb, 'tasks/' + tid))
+  }
+
+  function taskById(tid) {
+    // console.log(tid);
+    const taskRef = ref(rtDb, 'tasks/');
+    onValue(taskRef, (snapshot) => {
+      // snapshot.forEach(task => console.log(task.val()))
+      snapshot.forEach(task => {
+        if (task.val().tid===tid) {
+          // console.log("true");
+          // return task.val();
+          setTaskId(task.val());
+          return 0;
+        }
+      })
+    });
   }
 
   const value = {
     addTask,
     editTask,
     deleteTask,
+    taskById,
+    taskId,
     allTasks
   }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "../components/Header/Header";
 import NavBar from "../components/NavBar/NavBar";
-import AllProjects from "../components/Projects/AllProjects";
+import AllProjects from "../components/Projects/allProjects";
 
 
 export default function Home() {

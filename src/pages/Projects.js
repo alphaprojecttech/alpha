@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import AddProject from '../components/Projects/AddProject'
-import EditProject from '../components/Projects/EditProject'
+import AddProject from '../components/Projects/addProject';
+import EditProject from '../components/Projects/EditProject';
 import { useProject } from '../context/ProjectContext';
 
 export default function Projects(){
