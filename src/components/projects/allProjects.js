@@ -23,17 +23,6 @@ export default function AllProjects() {
       {allProjects.map((project) => {
         return (
           <div key={project.pid} className="bg-black text-white rounded-xl py-5 px-6 space-y-3 border border-[#ffffffa8]">
-            {/* <h3>Title: {project.title}</h3>
-                        <h4>Pid: {project.pid}</h4>
-                        <p>Category: {project.category}</p>
-                        <p>Type: {project.type}</p>
-                        <p>Description: {project.description}</p>
-                        <p>Budget: ${project.budget}</p>
-                        <p>Start Date: {project.startdate}</p>
-                        <p>Deadline: {project.deadline}</p>
-                        <p>Github Repo: {project.github}</p>
-                        <p>Number Of People: {project.participants.length}</p>
-                        <p>Complete: {project.complete? "true" : "false"}</p> */}
 
             <div className="flex items-center">
               <span className="w-1/2 flex items-center">
