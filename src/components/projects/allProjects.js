@@ -13,12 +13,13 @@ export default function AllProjects() {
 
   let { allProjects } = useProject();
 
-  const handleSelectProject = (pid) => {
-    console.log(pid);
-  };
+    const handleSelectProject = (pid)=> {
+        console.log(pid)
+    }
 
-  return (
-    <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2">
+
+    return (
+      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2">
       {allProjects.map((project) => {
         return (
           <div key={project.pid} className="bg-black text-white rounded-xl py-5 px-6 space-y-3 border border-[#ffffffa8]">
@@ -148,5 +149,5 @@ export default function AllProjects() {
         );
       })}
     </div>
-  );
+    )
 }

@@ -98,6 +98,18 @@ export default function NavBar(props){
                 <p className="font-medium capitalize">View task</p>
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                exact
+                activeClassName="active"
+                className="flex items-center gap-4 px-8 py-3 text-white capitalize w-full border-r-2 border-transparent"
+                to="/chat"
+              >
+                <FaRegUserCircle size={22} className="fill-white" />
+                <p className="font-medium capitalize">Chat</p>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </aside>

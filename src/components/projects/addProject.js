@@ -23,9 +23,6 @@ export default function AddProject() {
         })
     }
 
-
-
-
     return (
         <div style={{ display: 'flex', flexDirection: 'column', width: 400, margin: 10, padding: 5, border: '1px solid black' }}>
             <h3>Add Project</h3>
