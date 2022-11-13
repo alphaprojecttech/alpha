@@ -1,3 +1,4 @@
+import ChatBox from "../components/Chat/ChatBox";
 import Users from "../components/Chat/Users";
 
 
@@ -8,7 +9,7 @@ export default function Chat(){
                 <Users />
             </div>
             <div style={{display: 'flex', flex: 3, backgroundColor: 'green'}}>
-                Box 2
+                <ChatBox />
             </div>
             <div style={{display: 'flex', flex: 1, backgroundColor: 'purple'}}>
                 Box 3

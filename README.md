@@ -12,11 +12,8 @@ yourname
 
 
 ## Login Users
-You can use these dummy accounts to navigate the site.
+You can use 'yourname' then add @email.com with password '123456' to navigate the site.
 
 ```sh
 dev@email.com 123456
-bobby@email.com 123456
-joe@email.com 123456
-kim@email.com 123456
 ```
