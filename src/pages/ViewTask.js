@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useTask } from '../context/TaskContext';
 
 
 export default function ViewTask() {
     const [showTasks, setShowTasks] = useState(false);
-    let [allProjects, setAllProjects] = useState([])
+    let [allProjects, setAllProjects] = useState([]);
+    let [rel,setRel]=useState([{
+        task:null,
+        project:null
+    }])
 
     let { allTasks } = useTask();
 
@@ -14,37 +19,31 @@ export default function ViewTask() {
         console.log(pid)
     }
 
-    // const getProject = (tid) => {
-    //     const projectsRef = ref(rtDb, `projects/${tid}`);
-    //     onValue(projectsRef, (snapshot) => {
-    //         let array = []
-    //         snapshot.forEach(project => {
-    //             array.push(project.val())
-    //         })
-    //         setAllProjects(array)
-    //     });
-    // }
+    useEffect(() => {
+        function getProject() {
+            // console.log(pid);
+            allTasks.map((item) =>
+            // setRel((prev)=>)
+                axios.get(`https://alpha-project-405b5-default-rtdb.firebaseio.com/projects/${item.project}.json`).then(res => res.data).then(data => setAllProjects((prev) => [
+                    ...prev,
+                    data
+                ]))
+
+            )
+
+        }
+        getProject()
+    }, [allTasks])
+
+    console.log(allProjects);
+
+    // axios.get(`https://alpha-project-405b5-default-rtdb.firebaseio.com/projects/d36e0ff1-052b-4c4a-bd19-268ea11475d8.json`).then(res=>console.log(res))
+
 
 
     return (
         <div>
-            {allTasks?.map((task) => {
-                // getProject(task?.tid)
-                return (
-                    <div className='text-white border !border-white' key={task.pid} style={{ border: '1px solid black', padding: 5, margin: 10 }}>
-                        <h3>Name: {task?.name}</h3>
-                        <h4>Pid: {task?.pid}</h4>
-                        <p>Text: {task?.text}</p>
-                        <p>Type: {task?.type}</p>
-                        <p>Amount: {task?.amount}</p>
-                        <p>Image: ${task?.image}</p>
-                        <p>Active: {task?.active}</p>
-                        <p>Complete: {task?.complete}</p>
-                        <p>Project: {task?.project}</p>
-                    </div>
-                )
-            })}
-
+            lol
         </div>
     )
 }
