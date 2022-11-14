@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import AddProject from '../components/Projects/addProject';
+import AddProject from '../components/Projects/AddProject';
 import EditProject from '../components/Projects/EditProject';
 import { useProject } from '../context/ProjectContext';
 
