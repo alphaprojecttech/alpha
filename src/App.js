@@ -8,9 +8,15 @@ import Profile from "./pages/Profile";
 import Projects from "./pages/Projects";
 import Task from "./pages/Task";
 
+import { useChat } from './context/ChatContext'
+
+
+
+
 
 function App() {
-
+  
+  useChat()
   const { currentUser } = useAuth();
 
   return (

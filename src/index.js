@@ -12,7 +12,6 @@ import { TaskProvider } from './context/TaskContext';
 import './index.css';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
