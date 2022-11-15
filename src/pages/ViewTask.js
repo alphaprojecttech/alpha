@@ -2,6 +2,7 @@
 import { async } from "@firebase/util";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ShowTask from "../components/Task/ShowTask";
 import { useTask } from "../context/TaskContext";
 
 function classNames(...classes) {
@@ -74,13 +75,7 @@ export default function ViewTask() {
                                 <h1 className='text-xl'>Project title: {project?.title}</h1>
                                 <div>
                                     <button onClick={() => setShow(!show)}> {'>'} {taskItem?.type}</button>
-                                    <ul className={classNames(show ? "block" : "hidden", "border border-green-400 m-4")}>
-                                        <li>task name : {taskItem?.name}</li>
-                                        <li>task amount : {taskItem?.amount}</li>
-                                        <li>task active : {taskItem?.active}</li>
-                                        <li>task complete : {taskItem?.complete}</li>
-                                        <li>task tid : {taskItem?.tid}</li>
-                                    </ul>
+                                    <ShowTask taskItem={taskItem} show={show}/>
                                 </div>
                             </div>
                         </>
