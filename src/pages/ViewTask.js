@@ -59,24 +59,21 @@ export default function ViewTask() {
         getTask();
     }, []);
 
-    console.log("rel", rel);
+    // console.log("rel", rel);
 
     return (
         <div>
         {
             rel?.map((relItem) => {
-                // console.log("hi",relItem);
                 let project = relItem?.project;
                 let taskItem = relItem?.task;
-                // let taskKey=Object.keys(task);
-                // console.log(Object.keys(taskItem));
                 if (relItem.project !== '') {
                     return (
                         <>
                             <div className='flex flex-col border border-black'>
                                 <h1 className='text-xl'>Project title: {project?.title}</h1>
                                 <div>
-                                    <button onClick={() => setShow(!show)}>{taskItem?.type}</button>
+                                    <button onClick={() => setShow(!show)}> {'>'} {taskItem?.type}</button>
                                     <ul className={classNames(show ? "block" : "hidden", "border border-green-400 m-4")}>
                                         <li>task name : {taskItem?.name}</li>
                                         <li>task amount : {taskItem?.amount}</li>
