@@ -3,9 +3,12 @@ import { useEffect, useState } from 'react';
 import { useTask } from '../context/TaskContext';
 
 
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+  
 export default function ViewTask() {
-    const [showTasks, setShowTasks] = useState(false);
-    let [allProjects, setAllProjects] = useState([]);
+    let [show,setShow]=useState(false);
     let [rel,setRel]=useState([{
         task:null,
         project:null
@@ -13,21 +16,21 @@ export default function ViewTask() {
 
     let { allTasks } = useTask();
 
-    // console.log(taskId);
-
-    const handleSelectTask = (pid) => {
-        console.log(pid)
-    }
 
     useEffect(() => {
         function getProject() {
             // console.log(pid);
             allTasks.map((item) =>
-            // setRel((prev)=>)
-                axios.get(`https://alpha-project-405b5-default-rtdb.firebaseio.com/projects/${item.project}.json`).then(res => res.data).then(data => setAllProjects((prev) => [
-                    ...prev,
-                    data
-                ]))
+                axios.get(`https://alpha-project-405b5-default-rtdb.firebaseio.com/projects/${item.project}.json`).then(res => res.data).then(data => {
+                    
+                    setRel((prev)=>[
+                        ...prev,
+                        {
+                            task:item,
+                            project:data
+                        }
+                    ])
+                })
 
             )
 
@@ -35,15 +38,33 @@ export default function ViewTask() {
         getProject()
     }, [allTasks])
 
-    console.log(allProjects);
-
-    // axios.get(`https://alpha-project-405b5-default-rtdb.firebaseio.com/projects/d36e0ff1-052b-4c4a-bd19-268ea11475d8.json`).then(res=>console.log(res))
-
+    // console.log(rel);
 
 
     return (
         <div>
-            lol
+            {
+                rel.map((relItem)=>{
+                    // console.log(relItem);
+                    let project=relItem?.project;
+                    let task=relItem?.task;
+                    if(relItem.project!==null){
+                        return(
+                            <>
+                            <div className='flex flex-col border border-black'>
+                                <h1 className='text-xl'>Project title: {project?.title}</h1>
+                                <div>
+                                <button onClick={()=>setShow(!show)}>{task?.type}</button>
+                                <ul className={classNames(show?"flex flex-col":"hidden","border border-green-400")}>
+                                    <li>task name : {task?.name}</li>
+                                </ul>
+                                </div>
+                            </div>
+                            </>
+                        )
+                    }
+                })
+            }
         </div>
     )
 }

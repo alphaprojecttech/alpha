@@ -16,7 +16,7 @@ export const TaskProvider = ({ children }) => {
 
   useEffect(() => {
     const taskRef = ref(rtDb, 'tasks/');
-    onValue(taskRef, (snapshot) => {
+     onValue(taskRef, (snapshot) => {
       let array = []
       snapshot.forEach(task => {
         array.push(task.val())
@@ -25,7 +25,7 @@ export const TaskProvider = ({ children }) => {
     });
 
     
-  }, [onValue]);
+  }, []);
 
   //Add project 
   function addTask(config) {
