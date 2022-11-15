@@ -55,8 +55,12 @@ export default function ViewTask() {
                                 <h1 className='text-xl'>Project title: {project?.title}</h1>
                                 <div>
                                 <button onClick={()=>setShow(!show)}>{task?.type}</button>
-                                <ul className={classNames(show?"flex flex-col":"hidden","border border-green-400")}>
+                                <ul className={classNames(show?"block":"hidden","border border-green-400 m-4")}>
                                     <li>task name : {task?.name}</li>
+                                    <li>task amount : {task?.amount}</li>
+                                    <li>task active : {task?.active}</li>
+                                    <li>task complete : {task?.complete}</li>
+                                    <li>task tid : {task?.tid}</li>
                                 </ul>
                                 </div>
                             </div>
