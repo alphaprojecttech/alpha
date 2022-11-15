@@ -12,7 +12,8 @@ export const useTask = () => {
 export const TaskProvider = ({ children }) => {
 
   let [allTasks, setAllTasks] = useState([])
-  let [taskId, setTaskId] = useState([])
+  let [taskId, setTaskId] = useState([]);
+  let [taskLen, setTaskLen] = useState(0);
 
   useEffect(() => {
     const taskRef = ref(rtDb, 'tasks/');
@@ -24,8 +25,9 @@ export const TaskProvider = ({ children }) => {
       setAllTasks(array)
     });
 
+    setTaskLen(allTasks.length)
     
-  }, []);
+  }, [allTasks.length]);
 
   //Add project 
   function addTask(config) {
@@ -76,6 +78,7 @@ export const TaskProvider = ({ children }) => {
     deleteTask,
     taskById,
     taskId,
+    taskLen,
     allTasks
   }
 
